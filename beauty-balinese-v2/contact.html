@@ -1,234 +1,545 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kontakt — Beauty Balinese Boutique</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt i rezerwacja — Beauty Balinese Boutique | Wrocław</title>
+<meta name="description" content="Skontaktuj się z Beauty Balinese Boutique. Adres: Szewska 18, Wrocław. Tel: 71 758 54 67. Rezerwacja online w 30 sekund.">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #2d2d2d; line-height: 1.6; background: #faf9f7; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Colors */
 :root {
-  --gold: #c4956a;
-  --gold-light: #e8d5b7;
-  --dark: #1a1a2e;
-  --dark2: #2d2d44;
-  --cream: #faf9f7;
-  --sage: #8b9a7a;
-  --text: #2d2d2d;
-  --text-light: #666;
+  --bg: #f7f5f2;
+  --bg-alt: #ffffff;
+  --text: #2c2c2c;
+  --text-muted: #6b6b6b;
+  --accent: #b87a5a;
+  --accent-light: #d49a76;
+  --accent-dark: #9a6246;
+  --warm: #efe6dc;
+  --warm-dark: #d4c4b4;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+  --transition: 0.25s ease;
 }
 
-/* Utilities */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.text-center { text-align: center; }
-.mb-20 { margin-bottom: 20px; }
-.mb-40 { margin-bottom: 40px; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+@media (max-width: 480px) { .container { padding: 0 16px; } }
 
-/* Navigation */
-nav { background: var(--dark); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-.logo { color: var(--gold); font-size: 1.3em; font-weight: bold; text-decoration: none; }
-.logo span { color: white; font-weight: 300; }
-.nav-links { display: flex; gap: 25px; align-items: center; }
-.nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9em; transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-cta { background: var(--gold); color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; }
-.nav-cta:hover { background: #b8885a !important; color: white !important; }
+.top-bar { background: var(--accent-dark); color: rgba(255,255,255,0.9); font-size: 0.82rem; padding: 8px 24px; text-align: center; }
+.top-bar a { color: white; text-decoration: none; }
+.top-bar a:hover { text-decoration: underline; }
 
-/* Mobile nav */
-.menu-toggle { display: none; color: white; font-size: 1.5em; cursor: pointer; background: none; border: none; }
+header { background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1120px; margin: 0 auto; }
+.logo { font-size: 1.2rem; font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: -0.3px; }
+.logo span { color: var(--text); font-weight: 400; }
+.nav-links { display: flex; gap: 6px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; padding: 8px 14px; border-radius: 8px; transition: background var(--transition), color var(--transition); }
+.nav-links a:hover, .nav-links a.active { background: var(--warm); color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: white !important; padding: 10px 22px !important; border-radius: 50px !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--accent-dark) !important; }
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text); padding: 4px; }
 @media (max-width: 768px) {
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--dark); padding: 20px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: white; padding: 16px; box-shadow: var(--shadow-lg); gap: 4px; }
   .nav-links.open { display: flex; }
   .menu-toggle { display: block; }
+  .nav-links a { padding: 10px 14px; width: 100%; }
 }
 
-/* Hero */
-.hero { background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, var(--gold) 100%); color: white; padding: 100px 5%; text-align: center; position: relative; overflow: hidden; }
-.hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 50%); }
-.hero-content { position: relative; z-index: 1; }
-.hero-badge { display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 8px 24px; border-radius: 50px; font-size: 0.85em; margin-bottom: 25px; letter-spacing: 0.5px; }
-.hero h1 { font-size: 3em; margin-bottom: 15px; line-height: 1.15; }
-.hero h1 span { color: var(--gold-light); }
-.hero p { font-size: 1.15em; opacity: 0.9; max-width: 600px; margin: 0 auto 35px; line-height: 1.7; }
-.hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-.btn-primary { background: var(--gold); color: white; padding: 15px 38px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.05em; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,149,106,0.4); }
-.btn-secondary { background: rgba(255,255,255,0.12); color: white; padding: 15px 38px; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 1.05em; transition: background 0.2s; display: inline-block; }
-.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+.demo-notice { background: #f7f0e0; padding: 10px 24px; text-align: center; font-size: 0.82rem; color: #7d6b4a; }
+.demo-notice strong { color: var(--accent-dark); }
 
-/* Sections */
-section { padding: 80px 5%; }
-.section-title { font-size: 2.2em; margin-bottom: 10px; text-align: center; }
-.section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 50px; font-size: 1.05em; max-width: 600px; margin-left: auto; margin-right: auto; }
+.page-header { background: white; border-bottom: 1px solid #f0ece8; padding: 48px 0 40px; text-align: center; }
+.page-header h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
+.page-header p { color: var(--text-muted); max-width: 540px; margin: 0 auto; }
 
-/* Card grids */
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+section { padding: 56px 0; }
+.section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+.section-sub { color: var(--text-muted); font-size: 1rem; max-width: 560px; margin-bottom: 40px; line-height: 1.6; }
+.text-center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
 
-/* Cards */
-.card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 15px rgba(0,0,0,0.06); transition: transform 0.2s; }
-.card:hover { transform: translateY(-4px); }
-.card-img { height: 200px; background: linear-gradient(135deg, var(--gold-light), var(--sage)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3em; position: relative; }
-.card-img .placeholder { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.5); color: white; font-size: 11px; padding: 4px 10px; border-radius: 4px; }
-.card-body { padding: 25px; }
-.card-body h3 { margin-bottom: 8px; font-size: 1.15em; }
-.card-body p { color: var(--text-light); font-size: 0.9em; line-height: 1.6; }
-.card-price { color: var(--gold); font-weight: 600; margin-top: 10px; font-size: 0.95em; }
+/* --- contact info cards --- */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.contact-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.contact-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+.contact-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+.contact-card p, .contact-card a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; }
+.contact-card a:hover { color: var(--accent); }
 
-/* Reviews */
-.review-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.review-stars { color: #f1c40f; font-size: 1.1em; margin-bottom: 8px; }
-.review-text { color: var(--text-light); font-size: 0.9em; line-height: 1.6; font-style: italic; }
-.review-author { font-weight: 600; margin-top: 10px; font-size: 0.85em; }
+/* --- contact form + map grid --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.contact-form {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.contact-form h3 { margin-bottom: 20px; font-size: 1.1rem; }
 
-/* Gallery */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-.gallery-item { aspect-ratio: 4/3; background: linear-gradient(135deg, #e8d5b7, #c4956a); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1em; position: relative; }
-.gallery-item .label { position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 6px; font-size: 12px; text-align: center; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e5ddd5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--bg);
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--accent);
+  background: white;
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-error { color: #d32f2f; font-size: 0.8rem; margin-top: 4px; display: none; }
+.form-error.show { display: block; }
+.form-success { display: none; text-align: center; padding: 20px 0; }
+.form-success.show { display: block; }
+.form-success .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.form-success h3 { margin-bottom: 6px; }
+.form-success p { color: var(--text-muted); font-size: 0.9rem; }
 
-/* About page */
-.about-hero { background: linear-gradient(135deg, var(--dark), var(--dark2)); color: white; padding: 60px 5%; text-align: center; }
-.about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: -30px; position: relative; z-index: 2; }
-.stat-card { background: white; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-.stat-number { font-size: 2em; font-weight: bold; color: var(--gold); }
-.stat-label { color: var(--text-light); font-size: 0.85em; margin-top: 5px; }
+.map-container {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.map-container iframe { width: 100%; height: 320px; border: none; display: block; }
+.map-info { padding: 20px 24px; }
+.map-info p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
 
-/* Contact */
-.contact-info { background: var(--dark); color: white; padding: 50px 5%; text-align: center; }
-.contact-info h2 { margin-bottom: 25px; }
-.contact-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
-.contact-item { padding: 15px; }
-.contact-item .icon { font-size: 1.5em; margin-bottom: 8px; }
-.contact-item .label { color: rgba(255,255,255,0.6); font-size: 0.85em; }
-.contact-item .value { font-size: 1.05em; font-weight: 500; }
-
-/* Footer */
-footer { background: #111; color: rgba(255,255,255,0.5); padding: 30px 5%; text-align: center; font-size: 0.85em; }
-footer a { color: var(--gold); text-decoration: none; }
-footer .footer-links { display: flex; gap: 20px; justify-content: center; margin: 15px 0; flex-wrap: wrap; }
-footer .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.9em; }
-footer .footer-links a:hover { color: var(--gold); }
-
-/* Demo notice */
-.demo-notice { background: #fef9e7; border-bottom: 2px solid var(--gold); padding: 12px 20px; text-align: center; font-size: 0.85em; color: #7d6608; }
-.demo-notice strong { color: var(--dark); }
-
-/* Price table */
-.price-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.price-table th { background: var(--dark); color: white; padding: 14px 20px; text-align: left; font-weight: 500; }
-.price-table td { padding: 14px 20px; border-bottom: 1px solid #f0f0f0; }
-.price-table tr:last-child td { border: none; }
-.price-table .price { color: var(--gold); font-weight: 600; text-align: right; }
-.price-table .time { color: var(--text-light); font-size: 0.85em; }
 @media (max-width: 768px) {
-  .price-table th, .price-table td { padding: 10px 12px; font-size: 0.9em; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
 }
 
-/* Booking flow mockup */
-.booking-flow { background: white; border-radius: 16px; padding: 40px; max-width: 500px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.booking-flow .step { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
-.booking-flow .step-num { background: var(--gold); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85em; flex-shrink: 0; }
-.booking-flow .step-text { font-size: 0.9em; color: var(--text-light); padding-top: 5px; }
-.booking-flow .step-text strong { color: var(--text); }
-</style></head>
+/* --- booking form (same as index) --- */
+.booking-form {
+  background: white;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.booking-info {
+  background: white;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.booking-info h3 { margin-bottom: 16px; font-size: 1.1rem; }
+.booking-info ul { list-style: none; padding: 0; }
+.booking-info li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0ece8;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.booking-info li:last-child { border: none; }
+.booking-info li strong { color: var(--text); min-width: 100px; display: inline-block; }
+.confirmation { display: none; text-align: center; padding: 36px; }
+.confirmation.show { display: block; }
+.confirmation .icon { font-size: 3rem; margin-bottom: 16px; }
+.confirmation h3 { margin-bottom: 8px; }
+.confirmation p { color: var(--text-muted); max-width: 400px; margin: 0 auto; }
+
+@media (max-width: 768px) {
+  .booking-grid { grid-template-columns: 1fr; gap: 24px; }
+  .booking-form, .booking-info { padding: 24px; }
+}
+
+/* --- hours table --- */
+.hours-table { width: 100%; max-width: 400px; margin: 0 auto; }
+.hours-table td { padding: 8px 16px; font-size: 0.9rem; }
+.hours-table td:last-child { text-align: right; color: var(--text-muted); }
+
+/* --- buttons --- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 30px; border-radius: 50px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  transition: all var(--transition);
+  cursor: pointer; border: none;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(184,122,90,0.35); }
+.btn-outline { background: transparent; color: var(--text); border: 2px solid var(--warm-dark); }
+.btn-outline:hover { background: var(--warm); border-color: var(--accent); }
+
+/* --- footer --- */
+footer { background: #2c2c2c; color: rgba(255,255,255,0.6); padding: 48px 0 32px; font-size: 0.85rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+footer h4 { color: white; font-size: 0.9rem; margin-bottom: 14px; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+footer a:hover { color: var(--accent-light); }
+footer p { line-height: 1.8; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.8rem; }
+@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
 <body>
 
-  <div class="demo-notice">⚡ To jest przykładowa nowoczesna wersja strony <strong>Beauty Balinese Boutique</strong>. Nie jest to oficjalna strona salonu.</div>
-  <nav>
-    <a href="index.html" class="logo">✦ BEATY <span>BALINESE</span></a>
+<div class="demo-notice">⚡ To jest przykładowa nowoczesna wersja strony <strong>Beauty Balinese Boutique</strong>. Nie jest to oficjalna strona salonu.</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">beauty balinese <span>boutique</span></a>
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    <div class="nav-links">
-      <a href="index.html">Strona główna</a><a href="about.html">O nas</a><a href="services.html">Usługi</a><a href="gallery.html">Galeria</a><a href="contact.html" class="active">Kontakt</a>
-      <a href="contact.html" class="nav-cta">📅 Rezerwacja</a>
-    </div>
-  </nav>
+    <nav class="nav-links">
+      <a href="index.html">Strona główna</a>
+      <a href="about.html">O nas</a>
+      <a href="services.html">Usługi</a>
+      <a href="gallery.html">Galeria</a>
+      <a href="contact.html" class="active">Kontakt</a>
+      <a href="#booking" class="nav-cta">Rezerwacja</a>
+    </nav>
+  </div>
+</header>
 
-<section style="background:linear-gradient(135deg,var(--dark),var(--dark2));color:white;padding:60px 5%;text-align:center;">
-  <h1 style="font-size:2.5em;margin-bottom:10px;">Rezerwacja i kontakt</h1>
-  <p style="opacity:0.8;">Umów się online lub zadzwoń — jesteśmy tu dla Ciebie</p>
-</section>
+<div class="page-header">
+  <div class="container">
+    <h1>Kontakt i rezerwacja</h1>
+    <p>Jesteśmy na Starym Mieście, pod adresem Szewska 18. Zadzwoń, napisz lub zarezerwuj online.</p>
+  </div>
+</div>
 
+<!-- Quick contact cards -->
 <section>
   <div class="container">
-    <div class="grid-2">
-      <div>
-        <h2 style="margin-bottom:20px;">📅 Zarezerwuj online</h2>
-        <div class="booking-flow">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-text"><strong>Wybierz usługę</strong><br>Masaż balijski, Dermaquest, depilacja — co tylko chcesz</div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-text"><strong>Wybierz termin</strong><br>Zobacz wolne sloty i zarezerwuj dogodną godzinę</div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-text"><strong>Potwierdź</strong><br>Dostaniesz SMS z potwierdzeniem i przypomnieniem na 24h przed</div>
-          </div>
-          <div style="text-align:center;margin-top:25px;">
-            <a href="#" class="btn-primary" style="pointer-events:none;opacity:0.6;">⚡ Rezerwacja online (demo)</a>
-            <p style="font-size:0.8em;color:var(--text-light);margin-top:8px;">📷 To jest przykładowy flow rezerwacji — w pełnej wersji działa na żywo.</p>
-          </div>
+    <div class="contact-cards fade-in">
+      <div class="contact-card">
+        <div class="icon">📍</div>
+        <h3>Adres</h3>
+        <p>Szewska 18, 50-139 Wrocław</p>
+        <p style="margin-top:4px;"><a href="https://maps.google.com/?q=Szewska+18+Wroc%C5%82aw" target="_blank">Zobacz na mapie →</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h3>Telefon</h3>
+        <p><a href="tel:717585467">71 758 54 67</a></p>
+        <p style="margin-top:4px;font-size:0.8rem;">Odbiór w godzinach otwarcia</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📧</div>
+        <h3>Email</h3>
+        <p><a href="mailto:szewska@beautybalineseboutique.pl">szewska@beautybalineseboutique.pl</a></p>
+        <p style="margin-top:4px;font-size:0.8rem;">Odpowiadamy w ciągu godziny</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">🕐</div>
+        <h3>Godziny otwarcia</h3>
+        <p>Pon–Niedz: 10:00 – 22:00</p>
+      </div>
+    </div>
+
+    <!-- Map + contact form -->
+    <div class="contact-grid">
+      <div class="map-container fade-in">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2504.8667432294187!2d17.034128676971147!3d51.10877607171116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc26f6a5b5b7d%3A0x8e8b5b5b5b5b5b5b!2sSzewska%2018%2C%2050-139%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — Beauty Balinese Boutique, Szewska 18, Wrocław"></iframe>
+        <div class="map-info">
+          <p><strong>Dojazd:</strong> Szewska 18 to sam środek Starego Miasta. Najbliższe parkingi: parking przy pl. Solnym (3 min pieszo) lub parking podziemny przy ul. Świdnickiej. Tramwaje: linie 2, 4, 10, 14 — przystanek "Rynek".</p>
         </div>
       </div>
-      <div>
-        <h2 style="margin-bottom:20px;">📍 Dane kontaktowe</h2>
-        <div style="background:#f8f9fa;border-radius:16px;padding:30px;">
-          <div style="margin-bottom:20px;">
-            <div style="font-size:1.5em;margin-bottom:5px;">📍</div>
-            <div style="font-weight:600;">Adres</div>
-            <div style="color:var(--text-light);">ul. Szewska 18, 50-139 Wrocław</div>
+
+      <!-- Contact form -->
+      <div class="contact-form fade-in">
+        <h3>📝 Wyślij wiadomość</h3>
+        <div id="contactFormContent">
+          <div class="form-group">
+            <label for="cName">Imię i nazwisko *</label>
+            <input type="text" id="cName" required>
+            <div class="form-error" id="errCName">Proszę podać imię i nazwisko</div>
           </div>
-          <div style="margin-bottom:20px;">
-            <div style="font-size:1.5em;margin-bottom:5px;">📞</div>
-            <div style="font-weight:600;">Telefon</div>
-            <div style="color:var(--text-light);"><a href="tel:717585467" style="color:var(--gold);text-decoration:none;">71 758 54 67</a></div>
-          </div>
-          <div style="margin-bottom:20px;">
-            <div style="font-size:1.5em;margin-bottom:5px;">📧</div>
-            <div style="font-weight:600;">Email</div>
-            <div style="color:var(--text-light);"><a href="mailto:szewska@beautybalineseboutique.pl" style="color:var(--gold);text-decoration:none;">szewska@beautybalineseboutique.pl</a></div>
-          </div>
-          <div>
-            <div style="font-size:1.5em;margin-bottom:5px;">🕐</div>
-            <div style="font-weight:600;">Godziny otwarcia</div>
-            <div style="color:var(--text-light);">
-              Poniedziałek — Piątek: 10:00 - 22:00<br>
-              Sobota: 10:00 - 22:00<br>
-              Niedziela: 12:00 - 21:00
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cEmail">Email *</label>
+              <input type="email" id="cEmail" required>
+              <div class="form-error" id="errCEmail">Proszę podać poprawny adres email</div>
+            </div>
+            <div class="form-group">
+              <label for="cPhone">Telefon</label>
+              <input type="tel" id="cPhone" placeholder="opcjonalnie">
             </div>
           </div>
+          <div class="form-group">
+            <label for="cSubject">Temat *</label>
+            <select id="cSubject">
+              <option value="Pytanie o usługę">Pytanie o usługę</option>
+              <option value="Rezerwacja wizyty">Rezerwacja wizyty</option>
+              <option value="Voucher podarunkowy">Voucher podarunkowy</option>
+              <option value="Współpraca">Współpraca</option>
+              <option value="Inne">Inne</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Wiadomość *</label>
+            <textarea id="cMessage" placeholder="W czym możemy Ci pomóc?" required></textarea>
+            <div class="form-error" id="errCMessage">Proszę wpisać treść wiadomości</div>
+          </div>
+          <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitContactForm()">✉️ Wyślij wiadomość</button>
         </div>
-        <div style="background:#fef9e7;border-radius:12px;padding:15px;margin-top:20px;font-size:0.85em;color:#7d6608;text-align:center;">
-          💡 Mapę Google z lokalizacją można dodać w jednej linijce — po podpisaniu umowy wstawiamy.
+        <div class="form-success" id="contactSuccess">
+          <div class="icon">✅</div>
+          <h3>Dziękujemy!</h3>
+          <p>Twoja wiadomość została wysłana. Odpowiemy najszybciej jak to możliwe, zwykle w ciągu godziny w godzinach otwarcia salonu.</p>
+          <button class="btn btn-outline" style="margin-top:16px;" onclick="resetContactForm()">Nowa wiadomość</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:var(--dark);color:white;text-align:center;">
+<!-- Booking section -->
+<section style="background:white;" id="booking">
   <div class="container">
-    <h2 style="margin-bottom:15px;">Masz pytania? Napisz!</h2>
-    <p style="opacity:0.8;margin-bottom:25px;max-width:500px;margin-left:auto;margin-right:auto;">Odpowiadamy w ciągu godziny w godzinach otwarcia salonu.</p>
-    <a href="mailto:szewska@beautybalineseboutique.pl" class="btn-primary">✉️ Wyślij wiadomość</a>
-    <p style="margin-top:15px;font-size:0.8em;opacity:0.5;">📷 Formularz kontaktowy z automatyzacją — dostępny w pełnej wersji.</p>
+    <div class="text-center">
+      <h2 class="section-title">📅 Rezerwacja online</h2>
+      <p class="section-sub mx-auto">Wypełnij formularz, a oddzwonimy w ciągu 30 minut, aby potwierdzić termin.</p>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-form" id="bookingForm">
+        <div id="bookingFormContent">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bName">Imię i nazwisko *</label>
+              <input type="text" id="bName" required>
+              <div class="form-error" id="errBName">Proszę podać imię i nazwisko</div>
+            </div>
+            <div class="form-group">
+              <label for="bPhone">Telefon *</label>
+              <input type="tel" id="bPhone" placeholder="np. 501 234 567" required>
+              <div class="form-error" id="errBPhone">Proszę podać poprawny numer telefonu</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bService">Usługa *</label>
+            <select id="bService" required>
+              <option value="">— Wybierz usługę —</option>
+              <option value="Masaz Balijski 60 min">Masaż Balijski 60 min — 199 zł</option>
+              <option value="Masaz Balijski 90 min">Masaż Balijski 90 min — 269 zł</option>
+              <option value="Dermaquest Face">Zabieg Dermaquest Face — 249 zł</option>
+              <option value="Rytual Ciala">Rytuał Ciała — 299 zł</option>
+              <option value="Depilacja Laserowa">Depilacja Laserowa — od 149 zł</option>
+              <option value="Pakiet Wellness">Pakiet Wellness — od 399 zł</option>
+            </select>
+            <div class="form-error" id="errBService">Proszę wybrać usługę</div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="bDate">Preferowana data *</label>
+              <input type="date" id="bDate" required>
+              <div class="form-error" id="errBDate">Proszę wybrać datę</div>
+            </div>
+            <div class="form-group">
+              <label for="bTime">Preferowana godzina</label>
+              <select id="bTime">
+                <option value="">— Dowolna —</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bNote">Uwagi (opcjonalnie)</label>
+            <textarea id="bNote" placeholder="Alergie, preferencje, dodatkowe pytania..."></textarea>
+          </div>
+          <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitBookingForm()">📅 Wyślij rezerwację</button>
+        </div>
+        <div class="confirmation" id="bookingConfirm">
+          <div class="icon">✅</div>
+          <h3>Dziękujemy za rezerwację!</h3>
+          <p>Twoja prośba o rezerwację została wysłana. Skontaktujemy się z Tobą w ciągu 30 minut, aby potwierdzić termin.</p>
+          <button type="button" class="btn btn-outline" style="margin-top:20px;" onclick="resetBookingForm()">Nowa rezerwacja</button>
+        </div>
+      </div>
+      <div class="booking-info">
+        <h3>Informacje o rezerwacji</h3>
+        <ul>
+          <li><strong>📍 Adres:</strong> ul. Szewska 18, 50-139 Wrocław</li>
+          <li><strong>📞 Telefon:</strong> <a href="tel:717585467" style="color:var(--accent);">71 758 54 67</a></li>
+          <li><strong>📧 Email:</strong> <a href="mailto:szewska@beautybalineseboutique.pl" style="color:var(--accent);">szewska@beautybalineseboutique.pl</a></li>
+          <li><strong>🕐 Godziny:</strong> Poniedziałek – Niedziela: 10:00 – 22:00</li>
+          <li><strong>💳 Płatność:</strong> Gotówka, karta, BLIK, przelew</li>
+          <li><strong>🎁 Vouchery:</strong> Bon podarunkowy na dowolną kwotę</li>
+        </ul>
+        <div style="margin-top:20px;padding:16px;background:var(--warm);border-radius:8px;font-size:0.85rem;color:var(--text-muted);">
+          💡 Po wysłaniu formularza oddzwonimy, aby potwierdzić termin. Rezerwacja jest ważna po potwierdzeniu przez nasz zespół. W pilnych sprawach dzwoń: <a href="tel:717585467" style="color:var(--accent);font-weight:600;">71 758 54 67</a>.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="index.html">Strona główna</a>
-        <a href="about.html">O nas</a>
-        <a href="services.html">Usługi</a>
-        <a href="gallery.html">Galeria</a>
-        <a href="contact.html">Kontakt</a>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Beauty Balinese Boutique</h4>
+        <p>Autentyczne masaże balijskie i profesjonalna kosmetologia w sercu Wrocławia od 2012 roku.</p>
+        <p style="margin-top:12px;">📧 <a href="mailto:szewska@beautybalineseboutique.pl">szewska@beautybalineseboutique.pl</a></p>
+        <p>📞 <a href="tel:717585467">71 758 54 67</a></p>
       </div>
-      <p>Przykładowa wizualizacja przygotowana przez <strong>RevenueLab SMB</strong></p>
-      <p style="margin-top:5px;">To nie jest oficjalna strona <a href="https://beautybalineseboutique.pl">Beauty Balinese Boutique</a>.</p>
-      <p style="margin-top:10px;">📧 szewska@beautybalineseboutique.pl | 📞 71/758-54-67 | 📍 Szewska 18, Wrocław</p>
+      <div>
+        <h4>Na skróty</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Strona główna</a></li>
+          <li><a href="about.html">O nas</a></li>
+          <li><a href="services.html">Usługi</a></li>
+          <li><a href="gallery.html">Galeria</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul class="footer-links">
+          <li><a href="https://maps.google.com/?q=Szewska+18+Wroc%C5%82aw">📍 Szewska 18, Wrocław</a></li>
+          <li><a href="tel:717585467">📞 71 758 54 67</a></li>
+          <li><a href="mailto:szewska@beautybalineseboutique.pl">✉️ Napisz do nas</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
-</body></html>
+    <div class="footer-bottom">
+      <p>Przykładowa wizualizacja przygotowana przez <strong>RevenueLab SMB</strong>. To nie jest oficjalna strona <a href="https://beautybalineseboutique.pl">Beauty Balinese Boutique</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Set min date to today
+const today = new Date().toISOString().split('T')[0];
+const bDate = document.getElementById('bDate');
+if (bDate) bDate.setAttribute('min', today);
+
+// --- Contact form ---
+function submitContactForm() {
+  let valid = true;
+  const fields = [
+    { id: 'cName', err: 'errCName', test: v => v.trim().length >= 2 },
+    { id: 'cEmail', err: 'errCEmail', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    { id: 'cMessage', err: 'errCMessage', test: v => v.trim().length >= 5 }
+  ];
+  fields.forEach(f => {
+    const input = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    if (f.test(input.value)) {
+      err.classList.remove('show');
+      input.style.borderColor = '';
+    } else {
+      err.classList.add('show');
+      input.style.borderColor = '#d32f2f';
+      valid = false;
+    }
+  });
+  if (!valid) return;
+  document.getElementById('contactFormContent').style.display = 'none';
+  document.getElementById('contactSuccess').classList.add('show');
+}
+
+function resetContactForm() {
+  document.getElementById('contactFormContent').style.display = 'block';
+  document.getElementById('contactSuccess').classList.remove('show');
+  ['cName','cEmail','cPhone','cMessage'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('cSubject').value = 'Pytanie o usługę';
+}
+
+// --- Booking form ---
+function submitBookingForm() {
+  let valid = true;
+  const fields = [
+    { id: 'bName', err: 'errBName', test: v => v.trim().length >= 2 },
+    { id: 'bPhone', err: 'errBPhone', test: v => v.replace(/[\s-]/g,'').length >= 9 },
+    { id: 'bService', err: 'errBService', test: v => v !== '' },
+    { id: 'bDate', err: 'errBDate', test: v => v !== '' }
+  ];
+  fields.forEach(f => {
+    const input = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    if (f.test(input.value)) {
+      err.classList.remove('show');
+      input.style.borderColor = '';
+    } else {
+      err.classList.add('show');
+      input.style.borderColor = '#d32f2f';
+      valid = false;
+    }
+  });
+  if (!valid) return;
+  document.getElementById('bookingFormContent').style.display = 'none';
+  document.getElementById('bookingConfirm').classList.add('show');
+}
+
+function resetBookingForm() {
+  document.getElementById('bookingFormContent').style.display = 'block';
+  document.getElementById('bookingConfirm').classList.remove('show');
+  ['bName','bPhone','bService','bDate','bTime','bNote'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
