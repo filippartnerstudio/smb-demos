@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Balinese Boutique — Nowoczesna strona | RevenueLab SMB</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.6; }
+    
+    .top-bar { background: #1a1a2e; color: white; padding: 8px 5%; display: flex; justify-content: space-between; font-size: 0.85em; }
+    .top-bar a { color: #e8d5b7; text-decoration: none; }
+    
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.3em; font-weight: bold; color: #c4956a; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav-links a { color: #333; text-decoration: none; font-size: 0.95em; }
+    .nav-cta { background: #c4956a; color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none; font-size: 0.9em; font-weight: 600; }
+    
+    .hero { background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #c4956a 100%); color: white; padding: 100px 5%; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="white" opacity="0.1"/><circle cx="50" cy="80" r="1" fill="white" opacity="0.08"/></svg>'); background-size: 200px; }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-label { background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 18px; border-radius: 50px; font-size: 0.85em; margin-bottom: 20px; }
+    .hero h1 { font-size: 2.8em; margin-bottom: 15px; line-height: 1.2; }
+    .hero h1 span { color: #e8d5b7; }
+    .hero p { font-size: 1.15em; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: #c4956a; color: white; padding: 14px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.05em; }
+    .btn-secondary { background: rgba(255,255,255,0.15); color: white; padding: 14px 36px; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 1.05em; backdrop-filter: blur(10px); }
+    
+    .notice { background: #fef9e7; border: 1px solid #f9e79f; border-radius: 12px; padding: 15px 25px; margin: -30px auto 40px; max-width: 700px; text-align: center; position: relative; z-index: 2; font-size: 0.9em; color: #7d6608; }
+    .notice strong { color: #1a1a2e; }
+    
+    section { padding: 60px 5%; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    h2 { font-size: 2em; margin-bottom: 15px; text-align: center; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-size: 1.1em; }
+    
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .card { background: #f8f9fa; border-radius: 16px; padding: 30px; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-3px); }
+    .card-icon { font-size: 2em; margin-bottom: 12px; }
+    .card h3 { margin-bottom: 8px; font-size: 1.15em; }
+    .card p { color: #666; font-size: 0.95em; line-height: 1.6; }
+    
+    .comparison { background: #f0f0f5; }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .comp-old { background: white; border-radius: 16px; padding: 30px; border: 2px solid #e74c3c20; }
+    .comp-new { background: white; border-radius: 16px; padding: 30px; border: 2px solid #27ae6020; }
+    .comp-old h3 { color: #e74c3c; margin-bottom: 15px; }
+    .comp-new h3 { color: #27ae60; margin-bottom: 15px; }
+    .comp-item { padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+    .comp-item:last-child { border: none; }
+    .badge-old { background: #fde8e8; color: #e74c3c; padding: 2px 10px; border-radius: 50px; font-size: 0.8em; }
+    .badge-new { background: #e8f8f0; color: #27ae60; padding: 2px 10px; border-radius: 50px; font-size: 0.8em; }
+    
+    .pricing { background: linear-gradient(135deg, #1a1a2e, #2d2d44); color: white; text-align: center; }
+    .pricing h2 { color: white; }
+    .pricing .subtitle { color: rgba(255,255,255,0.7); }
+    .price-box { display: inline-block; background: rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 60px; margin-top: 20px; backdrop-filter: blur(10px); }
+    .price-amount { font-size: 3em; font-weight: bold; color: #c4956a; }
+    .price-period { font-size: 1.1em; opacity: 0.7; }
+    .price-features { margin: 20px 0; text-align: left; }
+    .price-features li { padding: 6px 0; list-style: none; }
+    .price-features li::before { content: '✓ '; color: #c4956a; font-weight: bold; }
+    .price-cta { display: inline-block; background: #c4956a; color: white; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1em; font-weight: 600; margin-top: 15px; }
+    
+    .demo-badge { background: #c4956a; color: white; text-align: center; padding: 12px; font-size: 0.9em; }
+    
+    footer { background: #1a1a2e; color: rgba(255,255,255,0.6); padding: 40px 5%; text-align: center; font-size: 0.85em; }
+    footer a { color: #c4956a; text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2em; }
+      .comp-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .price-box { padding: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-badge">⚡ To jest przykładowa nowoczesna wersja strony. Nie jest to oficjalna strona Beauty Balinese Boutique.</div>
+  
+  <div class="top-bar">
+    <span>📞 71/758-54-67 • 📧 szewska@beautybalineseboutique.pl</span>
+    <a href="#">📅 Rezerwacja online</a>
+  </div>
+
+  <nav>
+    <div class="logo">✦ Beauty Balinese</div>
+    <div class="nav-links">
+      <a href="#">O nas</a>
+      <a href="#">Zabiegi</a>
+      <a href="#">Masaże</a>
+      <a href="#">Cennik</a>
+      <a href="#">Galeria</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <a href="#" class="nav-cta">📅 Umów wizytę</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-label">🌿 Egzotyczne rytuały w centrum Wrocławia</div>
+      <h1>Autentyczne masaże z <span>Bali</span><br>w nowoczesnym wydaniu</h1>
+      <p>Profesjonalne zabiegi twarzy Dermaquest, orientalne masaże wykonywane przez certyfikowanych masażystów z wyspy Bali i luksusowe rytuały na ciało — wszystko w jednym miejscu, na Starym Mieście.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary">🌐 Zarezerwuj online</a>
+        <a href="#" class="btn-secondary">Zobacz zabiegi →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="notice">
+    <strong>💡 Nowość:</strong> Rezerwacja online 24/7, automatyczne przypomnienia SMS i karta stałego klienta. 
+    <a href="#" style="color:#c4956a;font-weight:600;">Sprawdź →</a>
+  </div>
+
+  <section>
+    <div class="container">
+      <h2>Nowoczesna strona = więcej klientów</h2>
+      <p class="subtitle">Funkcje, które realnie zwiększają liczbę rezerwacji</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <h3>Rezerwacja online 24/7</h3>
+          <p>Klienci rezerwują zabiegi o każdej porze — bez telefonów, bez czekania. System sam blokuje zajęte terminy.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>Strona mobilna</h3>
+          <p>Większość klientek szuka salonu na telefonie. Nowoczesna strona działa idealnie na każdym urządzeniu.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>Automatyczne przypomnienia</h3>
+          <p>Nawet 30% mniej nieodwołanych wizyt dzięki SMS i email przypomnieniom. Więcej zajętych terminów.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⭐</div>
+          <h3>Opinie i galeria</h3>
+          <p>Automatyczna zbiórka opinii Google i prezentacja efektów zabiegów. To buduje zaufanie.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔝</div>
+          <h3>Pozycjonowanie w Google</h3>
+          <p>Nowoczesna strona + optymalizacja pod lokalne SEO = więcej klientów z wyszukiwarki.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎁</div>
+          <h3>Program lojalnościowy</h3>
+          <p>Stali klienci dostają punkty i rabaty. Automatycznie. Bez kart papierowych.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison">
+    <div class="container">
+      <h2>Twoja strona dzisiaj vs nowoczesna wersja</h2>
+      <p class="subtitle">Bez stresu, bez przepisywania — pokazuję różnicę na przykładzie</p>
+      <div class="comp-grid">
+        <div class="comp-old">
+          <h3>❌ Obecna strona</h3>
+          <div class="comp-item"><span>Układ</span><span class="badge-old">Tekst, mało zdjęć</span></div>
+          <div class="comp-item"><span>Mobile</span><span class="badge-old">Nieprzystosowana</span></div>
+          <div class="comp-item"><span>Rezerwacja</span><span class="badge-old">Tylko telefon</span></div>
+          <div class="comp-item"><span>Szybkość</span><span class="badge-old">Wolna</span></div>
+          <div class="comp-item"><span>SEO</span><span class="badge-old">Słabe</span></div>
+          <div class="comp-item"><span>Przypomnienia</span><span class="badge-old">Brak</span></div>
+        </div>
+        <div class="comp-new">
+          <h3>✅ Nowoczesna wersja</h3>
+          <div class="comp-item"><span>Układ</span><span class="badge-new">Nowoczesny, wizualny</span></div>
+          <div class="comp-item"><span>Mobile</span><span class="badge-new">Idealna na telefon</span></div>
+          <div class="comp-item"><span>Rezerwacja</span><span class="badge-new">Online 24/7</span></div>
+          <div class="comp-item"><span>Szybkość</span><span class="badge-new">Błyskawiczna</span></div>
+          <div class="comp-item"><span>SEO</span><span class="badge-new">Zoptymalizowane</span></div>
+          <div class="comp-item"><span>Przypomnienia</span><span class="badge-new">Automatyczne SMS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2>Co to kosztuje?</h2>
+      <p class="subtitle">Jedna opłata miesięczna — wszystko w środku</p>
+      <div class="price-box">
+        <div class="price-amount">147 zł/miesiąc</div>
+        <div class="price-period">miesięcznie, bez ukrytych kosztów</div>
+        <ul class="price-features">
+          <li>Nowoczesna strona www z systemem rezerwacji</li>
+          <li>Optymalizacja mobilna i SEO</li>
+          <li>Automatyczne przypomnienia SMS</li>
+          <li>System lojalnościowy</li>
+          <li>Galeria z opiniami klientów</li>
+          <li>Panel zarządzania — sami zmieniacie treści</li>
+        </ul>
+        <a href="#" class="price-cta">Chcę taką stronę</a>
+        <p style="margin-top:15px;font-size:0.85em;opacity:0.6;">Pierwszy miesiąc za darmo — jeśli nie przyniesie klientów, anulujesz.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Przykładowa wizualizacja przygotowana przez <strong>RevenueLab SMB</strong></p>
+    <p style="margin-top:5px;">To nie jest oficjalna strona <a href="https://beautybalineseboutique.pl" target="_blank">Beauty Balinese Boutique</a>. To propozycja modernizacji przygotowana na podstawie analizy ich obecnej strony.</p>
+    <p style="margin-top:15px;">📧 filip.partner.studio@gmail.com</p>
+  </footer>
+</body>
+</html>
