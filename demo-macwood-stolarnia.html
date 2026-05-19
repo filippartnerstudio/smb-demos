@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MacWood Stolarnia — Nowoczesna strona | RevenueLab SMB</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f6f4f0; --bg-alt: #ffffff; --text: #2c2c2c; --text-muted: #666;
+      --accent: #8a7a5a; --accent-light: #a8976f; --accent-dark: #6b5e45;
+      --warm: #ede8df; --radius: 12px; --radius-lg: 20px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06); --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    .demo-badge { background: #8a7a5a; color: white; text-align: center; padding: 10px; font-size: 0.85em; }
+
+    .hero { background: linear-gradient(135deg, #2c2c2c 0%, #3d3529 50%, #8a7a5a 100%); color: white; padding: 80px 5%; text-align: center; }
+    .hero h1 { font-size: 2.5em; margin-bottom: 15px; }
+    .hero h1 span { color: #d4c9a8; }
+    .hero p { font-size: 1.1em; opacity: 0.9; max-width: 650px; margin: 0 auto 25px; }
+    .hero-badge { background: rgba(255,255,255,0.12); display: inline-block; padding: 6px 18px; border-radius: 50px; font-size: 0.85em; margin-bottom: 20px; }
+
+    section { padding: 60px 5%; }
+    h2 { font-size: 2em; margin-bottom: 15px; text-align: center; }
+    .subtitle { text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 1.05em; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 20px; margin-bottom: 40px; }
+    .stat { text-align: center; padding: 30px 20px; background: white; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .stat-num { font-size: 2.2em; font-weight: bold; color: var(--accent); }
+    .stat-label { color: var(--text-muted); font-size: 0.9em; margin-top: 5px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 25px; }
+    .card { background: white; border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
+    .card h3 { margin-bottom: 10px; color: var(--accent-dark); }
+    .card p { color: var(--text-muted); font-size: 0.95em; }
+    .card-icon { font-size: 2em; margin-bottom: 10px; }
+
+    .comparison { background: #e8e4dc; }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .comp-card { background: white; border-radius: var(--radius-lg); padding: 30px; }
+    .comp-card h3 { margin-bottom: 20px; font-size: 1.3em; }
+    .comp-old h3 { color: #c0392b; }
+    .comp-new h3 { color: #27ae60; }
+    .comp-item { padding: 10px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+    .comp-item:last-child { border: none; }
+    .badge { padding: 3px 12px; border-radius: 50px; font-size: 0.8em; font-weight: 600; }
+    .badge-red { background: #fde8e8; color: #c0392b; }
+    .badge-green { background: #e8f8f0; color: #27ae60; }
+
+    .pricing { background: #2c2c2c; color: white; text-align: center; }
+    .pricing h2 { color: white; }
+    .pricing .subtitle { color: rgba(255,255,255,0.7); }
+    .price-box { display: inline-block; background: rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 40px 50px; margin-top: 20px; }
+    .price-amount { font-size: 3em; font-weight: bold; color: #d4c9a8; }
+    .price-period { font-size: 1em; opacity: 0.7; }
+    .price-features { margin: 20px 0; text-align: left; }
+    .price-features li { padding: 6px 0; list-style: none; }
+    .price-features li::before { content: '✓ '; color: #d4c9a8; font-weight: bold; }
+    .price-cta { display: inline-block; background: #8a7a5a; color: white; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1em; font-weight: 600; margin-top: 15px; }
+
+    .contact-form { max-width: 500px; margin: 0 auto; background: white; border-radius: var(--radius-lg); padding: 35px; box-shadow: var(--shadow-lg); }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-size: 1em; margin-bottom: 15px; font-family: inherit; }
+    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent); }
+    .contact-form button { background: var(--accent); color: white; border: none; padding: 14px 30px; border-radius: 8px; font-size: 1em; font-weight: 600; cursor: pointer; width: 100%; }
+    .contact-form button:hover { background: var(--accent-dark); }
+
+    footer { background: #2c2c2c; color: rgba(255,255,255,0.6); padding: 30px 5%; text-align: center; font-size: 0.85em; }
+    footer a { color: #d4c9a8; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8em; }
+      .comp-grid { grid-template-columns: 1fr; }
+      .price-box { padding: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-badge">⚡ To jest przykładowa nowoczesna wersja strony. Nie jest to oficjalna strona MacWood Stolarnia.</div>
+
+<section class="hero">
+  <div class="hero-badge">🏆 Laureat Orły Stolarstwa 2024-2026</div>
+  <h1>Stolarz na wymiar. <span>Strona na miarę.</span></h1>
+  <p>Maciej Mielnicki od lat tworzy meble z pasją i precyzją. Ma doskonałe opinie, nagrody i portfolio — ale nie ma własnej strony internetowej. Klienci znajdują go przez katalogi zamiast przez Google.</p>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Kim jest MacWood Stolarnia?</h2>
+    <p class="subtitle">Rzetelny stolarz z Wrocławia, który zasługuje na widoczność</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">lat doświadczenia</div></div>
+      <div class="stat"><div class="stat-num">5.0</div><div class="stat-label">średnia ocen klientów</div></div>
+      <div class="stat"><div class="stat-num">3x</div><div class="stat-label">laureat Orłów Stolarstwa</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">własnych stron www</div></div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🛋️</div>
+        <h3>Meble na wymiar</h3>
+        <p>Kuchnie, szafy wnękowe, garderoby, meble łazienkowe, biurowe — wszystko projektowane i wykonane pod konkretne wnętrze.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🪚</div>
+        <h3>Stolarka precyzyjna</h3>
+        <p>Schody z litego drewna, zabudowy poddaszy, blaty, stoły, ławy, regały — solidne rzemiosło z dbałością o detale.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <h3>Wizualizacje 3D</h3>
+        <p>Nowoczesne technologie: wizualizacje 3D i rozszerzona rzeczywistość, żeby klient zobaczył mebel zanim powstanie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <div class="container">
+    <h2>Obecna obecność w sieci vs to, co możliwe</h2>
+    <p class="subtitle">MacWood jest w katalogach — ale klienci go nie znajdują, jeśli nie znają nazwy</p>
+    <div class="comp-grid">
+      <div class="comp-card comp-old">
+        <h3>❌ Obecnie — 0 stron www</h3>
+        <div class="comp-item"><span>Strona internetowa</span><span class="badge badge-red">Brak</span></div>
+        <div class="comp-item"><span>Widoczność w Google</span><span class="badge badge-red">Tylko katalogi</span></div>
+        <div class="comp-item"><span>Prezentacja oferty</span><span class="badge badge-red">Rozproszona</span></div>
+        <div class="comp-item"><span>Kontakt przez stronę</span><span class="badge badge-red">Brak</span></div>
+        <div class="comp-item"><span>Zaufanie klienta</span><span class="badge badge-red">Tylko opinie</span></div>
+        <div class="comp-item"><span>Galeria prac</span><span class="badge badge-red">Brak własnej</span></div>
+      </div>
+      <div class="comp-card comp-new">
+        <h3>✅ Z nową stroną</h3>
+        <div class="comp-item"><span>Strona internetowa</span><span class="badge badge-green">Własna domena</span></div>
+        <div class="comp-item"><span>Widoczność w Google</span><span class="badge badge-green">SEO lokalne</span></div>
+        <div class="comp-item"><span>Prezentacja oferty</span><span class="badge badge-green">Kompletne portfolio</span></div>
+        <div class="comp-item"><span>Kontakt przez stronę</span><span class="badge badge-green">Formularz 24/7</span></div>
+        <div class="comp-item"><span>Zaufanie klienta</span><span class="badge badge-green">Profesjonalny wizerunek</span></div>
+        <div class="comp-item"><span>Galeria prac</span><span class="badge badge-green">Zdjecia + opisy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Co by zyskał Maciej?</h2>
+    <p class="subtitle">Konkretne funkcje, które przynoszą klientów</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>Lokalne SEO</h3>
+        <p>Gdy ktoś szuka "stolarz Wrocław" lub "meble na wymiar Wrocław" — MacWood będzie na pierwszej stronie Google, a nie w dziesiątym katalogu.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📸</div>
+        <h3>Portfolio online</h3>
+        <p>Galeria zrealizowanych projektów — kuchnie, schody, meble. Klient widzi jakość pracy zanim zadzwoni.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Mobilna, szybka strona</h3>
+        <p>Większość klientów szuka stolarza na telefonie. Strona ładuje się w sekundę i działa idealnie na każdym urządzeniu.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>Formularz zapytania</h3>
+        <p>Klient opisuje projekt, wybiera wymiary, zostaje numer — wycena w 24h. Bez czekania pod telefonem.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3>Opinie Google</h3>
+        <p>Automatyczna zbiórka opinii i wyświetlanie ich na stronie. Dobry wynik buduje zaufanie.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏅</div>
+        <h3>Nagrody i certyfikaty</h3>
+        <p>Orły Stolarstwa, TOP 100, Złota Firma — wszystko widoczne na stronie. Dowód jakości, który przekonuje klienta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="container">
+    <h2>Ile to kosztuje?</h2>
+    <p class="subtitle">Jedna stała opłata miesięczna — wszystko w środku</p>
+    <div class="price-box">
+      <div class="price-amount">147 zł/miesiąc</div>
+      <div class="price-period">lub 999 zł jednorazowo za wersję premium</div>
+      <ul class="price-features">
+        <li>Nowoczesna strona www z portfolio</li>
+        <li>Domena .pl i hosting na rok w cenie</li>
+        <li>Optymalizacja pod lokalne SEO</li>
+        <li>Formularz kontaktowy z powiadomieniami</li>
+        <li>Galeria zdjęć z opisami projektów</li>
+        <li>Panel zarządzania — sam zmieniasz treści</li>
+        <li>Wsparcie techniczne i aktualizacje</li>
+      </ul>
+      <a href="#" class="price-cta">Chcę taką stronę</a>
+      <p style="margin-top:15px;font-size:0.85em;opacity:0.6;">Pierwszy miesiąc za darmo — jeśli nie przyniesie klientów, anulujesz.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="container" style="text-align:center;">
+    <h2>Chcesz podobną stronę?</h2>
+    <p class="subtitle">Zostaw kontakt — oddzwonię w 24h i pokażę, jak może wyglądać Twoja strona</p>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <input type="text" id="name" placeholder="Imię i nazwisko" required>
+      <input type="tel" id="phone" placeholder="Telefon" required>
+      <input type="email" id="email" placeholder="Email">
+      <textarea id="msg" rows="3" placeholder="Czego dotyczy zapytanie? (opcjonalnie)"></textarea>
+      <button type="submit">Wyślij zapytanie</button>
+      <p id="form-msg" style="margin-top:10px;font-size:0.9em;color:#27ae60;display:none;">✓ Dziękuję! Skontaktuję się w ciągu 24h.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>Przykładowa wizualizacja przygotowana przez <strong>RevenueLab SMB</strong></p>
+  <p style="margin-top:5px;">Dane MacWood Stolarnia: ul. Porębska 12, 54-048 Wrocław | tel. 728 975 123</p>
+  <p style="margin-top:15px;">📧 filip.partner.studio@gmail.com</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if (!name || !phone) {
+    alert('Proszę wypełnić wymagane pola: imię i telefon.');
+    return;
+  }
+  document.getElementById('form-msg').style.display = 'block';
+  document.getElementById('form-msg').textContent = '✓ Dziękuję, ' + name + '! Skontaktuję się w ciągu 24h.';
+  // Reset the form
+  document.querySelector('.contact-form').reset();
+}
+</script>
+</body>
+</html>
