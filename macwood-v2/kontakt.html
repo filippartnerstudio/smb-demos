@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt – MacWood Stolarnia | Meble na wymiar Wrocław</title>
+<meta name="description" content="Skontaktuj się z MacWood Stolarnią. Zadzwoń 728 975 123, napisz lub wpadnij na ul. Porębską 12 we Wrocławiu. Wycena gratis.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <span>📞 728 975 123</span>
+    <span>📍 ul. Porębska 12, 54-048 Wrocław</span>
+    <a href="kontakt.html" class="top-cta">✉️ Napisz do nas</a>
+  </div>
+  <div class="header-inner container">
+    <a href="index.html" class="logo">Mac<span>Wood</span></a>
+    <nav>
+      <a href="index.html">Strona główna</a>
+      <a href="o-nas.html">O nas</a>
+      <a href="uslugi.html">Usługi</a>
+      <a href="galeria.html">Galeria</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Kontakt</h1>
+    <p>Opisz swój pomysł – oddzwonimy z wyceną w 24h.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2 style="text-align:left;">Dane kontaktowe</h2>
+        
+        <div class="contact-row">
+          <span class="contact-icon">📞</span>
+          <div>
+            <strong>Telefon</strong>
+            <p><a href="tel:728975123">728 975 123</a></p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <div>
+            <strong>Adres</strong>
+            <p>ul. Porębska 12<br>54-048 Wrocław</p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <span class="contact-icon">🕐</span>
+          <div>
+            <strong>Godziny otwarcia</strong>
+            <p>Pon–Pt: 8:00 – 17:00<br>Sob: po uzgodnieniu</p>
+          </div>
+        </div>
+
+        <div style="margin-top:25px;padding:20px;background:#f8f9fa;border-radius:12px;border-left:4px solid var(--accent);">
+          <p style="font-weight:600;margin-bottom:5px;">💡 Wycena gratis</p>
+          <p style="color:#555;">Opisz nam swój pomysł przez formularz lub zadzwoń. Dojeżdżamy bezpłatnie na terenie Wrocławia i okolic.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 style="text-align:left;">Napisz do nas</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <label for="imie">Imię i nazwisko *</label>
+          <input type="text" id="imie" required placeholder="Jan Kowalski">
+
+          <label for="telefon">Telefon *</label>
+          <input type="tel" id="telefon" required placeholder="600 123 456">
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="jan@example.pl">
+
+          <label for="typ">Czego dotyczy zapytanie?</label>
+          <select id="typ">
+            <option>Kuchnia na wymiar</option>
+            <option>Szafa / garderoba</option>
+            <option>Schody drewniane</option>
+            <option>Zabudowa poddasza</option>
+            <option>Renowacja mebli</option>
+            <option>Stół / ława na wymiar</option>
+            <option>Inne</option>
+          </select>
+
+          <label for="opis">Opisz swój pomysł *</label>
+          <textarea id="opis" rows="5" required placeholder="Wymiary, preferowany styl, materiały, budżet – im więcej szczegółów, tym dokładniejsza wycena."></textarea>
+
+          <p id="form-msg" style="display:none;padding:12px;background:#e8f8f0;border-radius:8px;color:#27ae60;margin-bottom:15px;">✓ Dziękujemy! Skontaktujemy się w ciągu 24h.</p>
+
+          <button type="submit">Wyślij zapytanie</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-section">
+      <h2 style="text-align:center;margin-bottom:20px;">Dojazd</h2>
+      <div style="background:#e8e4dc;border-radius:16px;height:350px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);">
+        <div style="text-align:center;">
+          <span style="font-size:2em;">📍</span>
+          <p style="font-weight:600;">ul. Porębska 12, 54-048 Wrocław</p>
+          <p style="font-size:0.9em;">Osiedle Fabryczna – dojazd od ul. Żmigrodzkiej</p>
+          <p style="font-size:0.9em;">☎️ Zadzwoń 728 975 123 – podpowiemy jak dojechać</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>MacWood Stolarnia</h4>
+      <p>Maciej Mielnicki<br>ul. Porębska 12<br>54-048 Wrocław</p>
+      <p>📞 728 975 123</p>
+    </div>
+    <div>
+      <h4>Usługi</h4>
+      <ul>
+        <li><a href="uslugi.html">Meble na wymiar</a></li>
+        <li><a href="uslugi.html">Kuchnie</a></li>
+        <li><a href="uslugi.html">Szafy i garderoby</a></li>
+        <li><a href="uslugi.html">Schody drewniane</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Na skróty</h4>
+      <ul>
+        <li><a href="o-nas.html">O nas</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 MacWood Stolarnia. Projekt i wykonanie: RevenueLab SMB.</p>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const imie = document.getElementById('imie').value.trim();
+  const telefon = document.getElementById('telefon').value.trim();
+  const opis = document.getElementById('opis').value.trim();
+  
+  if (!imie || !telefon || !opis) {
+    alert('Proszę wypełnić wszystkie wymagane pola.');
+    return;
+  }
+  if (telefon.replace(/[\s\-]/g,'').length < 9) {
+    alert('Proszę podać prawidłowy numer telefonu.');
+    return;
+  }
+  
+  document.getElementById('form-msg').style.display = 'block';
+  document.getElementById('form-msg').textContent = '✓ Dziękujemy, ' + imie + '! Skontaktujemy się w ciągu 24h.';
+  document.querySelector('.contact-form').reset();
+}
+</script>
+
+</body>
+</html>
